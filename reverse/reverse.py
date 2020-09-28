@@ -53,8 +53,8 @@ class LinkedList:
         if getattr(node, 'next_node', None) == None:     # Attempting to reverse an empty or single-node list
             return
         else:                                            # Valid list for reversing
-            newList = LinkedList()                       # Initialize a new empty linked list
-            while node != None:                          # Loop through nodes, calling add_to_head on each
-                newList.add_to_head(node.value)
+            self.head = None                             # Set head to none so that add_to_head calls will not build upon our existing list
+            while node != None:
+                self.add_to_head(node.value)             # We still have a ref to the old list via node so we can add every item in it to the new list
                 node = node.next_node
-            self.__dict__.update(newList.__dict__)       # Force self to update 
+            
